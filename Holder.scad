@@ -3,27 +3,29 @@ Title: Needle Holder
 Description: Holder for 24ga needles
 Designer: Nam Tran
 Units: mm
-Last Modified: 2022-06-16
+Last Modified: 2022-07-10
 */
 
 well_depth = 2.3;
+depth_tolerance = 0.0;
 well_diameter = 0.5;
+diameter_tolerance = 0.4;
 distance_between_wells = 10;
 
-base_width = 80;
-base_depth = 120;
+wells_per_row = 4;
+wells_per_column = 2;
 base_height = 5;
 
 module base() {
-    cube([base_width, base_depth, base_height]);
+    cube([((wells_per_row + 1) * distance_between_wells), ((wells_per_column + 1) * distance_between_wells), base_height]);
 }
 
 module wells() {
-    for (i = [0:distance_between_wells:(base_width - (2 * distance_between_wells))]) {
-        for (j = [0:distance_between_wells:(base_depth - (2 * distance_between_wells))]) {
-            translate([(distance_between_wells + i), (distance_between_wells + j), (base_height - well_depth)])
+    for (i = [0:(wells_per_row - 1)]) {
+        for (j = [0:(wells_per_column - 1)]) {
+            translate([distance_between_wells+(distance_between_wells * i), distance_between_wells+(distance_between_wells * j), (base_height - well_depth)])
             //cylinder(h=(well_depth + 0.1), r=well_diameter, $fn=360);
-            cube([well_diameter, well_diameter, (well_depth + 0.1)]);
+            cube([(well_diameter + diameter_tolerance), (well_diameter + diameter_tolerance), (well_depth + depth_tolerance + 0.1)]);
         }
     }
 }
