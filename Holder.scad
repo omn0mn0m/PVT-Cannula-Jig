@@ -9,12 +9,12 @@ Last Modified: 2022-07-10
 well_depth = 2.3;
 depth_tolerance = 0.0;
 well_diameter = 0.5;
-diameter_tolerance = 0.4;
-distance_between_wells = 10;
+diameter_tolerance = 0.0;
+distance_between_wells = 10.0;
 
 wells_per_row = 4;
 wells_per_column = 2;
-base_height = 5;
+base_height = 5.0;
 
 module base() {
     cube([((wells_per_row + 1) * distance_between_wells), ((wells_per_column + 1) * distance_between_wells), base_height]);
