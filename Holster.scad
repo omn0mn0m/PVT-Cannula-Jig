@@ -7,7 +7,7 @@ Last Modified: 2022-07-10
 */
 
 /*[ Well Values] */
-well_depth = 2.3; // .1
+well_depth = 0.6; // .1
 // Depth adjustment from "true" value
 depth_tolerance = 0.0; // .1
 well_diameter = 0.5; // .1
